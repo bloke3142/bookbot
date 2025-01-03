@@ -18,8 +18,23 @@ def count_characters(string):
     #return dictionary of letter/number pairs
     return character_count
 
-def char_count_descending(letters_count):
-     #sort dictionary from high to low count
+def dict_to_list(dictionary):
+    #make empty list
+    list = []
+    #iterate dictionary and add to list
+    for i in dictionary:
+          list.append({'letter': i, 'count': dictionary[i]})
+    return list
+
+def sort_on(dict):
+    return dict["count"]
+
+
+
+def char_count_descending(list):
+     #sort list of dictionarys from high to low count
+     list.sort(reverse=True, key=sort_on)
+     return list
 
 def main():
     with open("books/frankenstein.txt") as f:
@@ -28,7 +43,10 @@ def main():
         words = count_words(file_contents)
         print(f"Number of words: {words}")
         characters = count_characters(file_contents)
-        descending_list = char_count_descending(characters)
-        #print letters and count in descending order
+        print(characters)
+        list_of_chars = dict_to_list(characters)
+        print(list_of_chars)
+        descending_list = char_count_descending(list_of_chars)
+        print(descending_list)
 
 main()
