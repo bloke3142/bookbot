@@ -23,7 +23,7 @@ def dict_to_list(dictionary):
     list = []
     #iterate dictionary and add to list
     for i in dictionary:
-          list.append({'letter': i, 'count': dictionary[i]})
+          list.append({"letter": i, "count": dictionary[i]})
     return list
 
 def sort_on(dict):
@@ -36,17 +36,28 @@ def char_count_descending(list):
      list.sort(reverse=True, key=sort_on)
      return list
 
+def print_list(list):
+     for dict in list:
+          print(f"Letter '{dict["letter"]}' appears {dict["count"]} times")
+
 def main():
-    with open("books/frankenstein.txt") as f:
+    book = "books/frankenstein.txt"
+    with open(book) as f:
         file_contents = f.read()
-        print(file_contents)
+        #print(file_contents)
         words = count_words(file_contents)
+        print(f"Report on {book} :-")
+        print()
         print(f"Number of words: {words}")
+        print()
         characters = count_characters(file_contents)
-        print(characters)
+        #print(characters)
         list_of_chars = dict_to_list(characters)
-        print(list_of_chars)
+        #print(list_of_chars)
         descending_list = char_count_descending(list_of_chars)
-        print(descending_list)
+        #print(descending_list)
+        print_list(descending_list)
+        print()
+        print("End of report")
 
 main()
